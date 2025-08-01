@@ -1,0 +1,166 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Theme variables */
+:root {
+  --bg: #f0f0f0;
+  --text: #333;
+  --primary: #2a5298;
+  --cell-bg: #ffffff;
+}
+body.dark {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --primary: #90caf9;
+  --cell-bg: #1e1e1e;
+}
+
+/* Container layout */
+.container {
+  text-align: center;
+  padding: 20px;
+  max-width: 100%;
+}
+
+/* Heading */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+/* Options */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto;
+}
+.options input,
+.options select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 160px;
+}
+
+/* Buttons */
+.options button,
+.controls button {
+  padding: 10px 20px;
+  margin: 5px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s, transform 0.2s;
+}
+.options button:hover,
+.controls button:hover {
+  background: #1c3c78;
+  transform: scale(1.05);
+}
+.options button:active,
+.controls button:active {
+  background: #163060;
+  transform: scale(0.98);
+}
+
+/* Score and status */
+.scoreboard {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+#status {
+  margin: 15px 0;
+  font-size: 1.1rem;
+}
+
+/* Game board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: var(--cell-bg);
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.1s;
+}
+.cell.winner {
+  background-color: gold;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Controls */
+.controls {
+  margin-top: 10px;
+}
+
+/* ✅ Responsive for phones */
+@media (max-width: 500px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    gap: 8px;
+  }
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+  .options input,
+  .options select {
+    width: 130px;
+    font-size: 0.95rem;
+  }
+  .options button,
+  .controls button {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+.game-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111; /* Perfect for light mode */
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px var(--shadow);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+body.dark .game-title {
+  color: #90caf9; /* Bright blue for dark mode */
+  text-shadow: 1px 1px 2px #000;
+}
+
+@media (max-width: 500px) {
+  .game-title {
+    font-size: 1.8rem;
+  }
+}
